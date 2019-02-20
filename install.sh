@@ -27,8 +27,14 @@ genfstab -U /mnt >> /mnt/etc/fstab
 cat << _EOF_ >> /mnt/setup.sh
 #!/bin/bash
 
-# locale
+# timezone
+ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+hwclock --systohc --utc
 
+# locale
+echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+echo ja_JP.UTF-8 UTF-8 >> /etc/locale.gen
+locale-gen
 
 # keymap
 
