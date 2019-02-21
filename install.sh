@@ -25,7 +25,7 @@ pacstrap /mnt base base-devel
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Create setup script
-cat << _EOF_ >> /mnt/setup.sh
+cat << EOF > /mnt/setup.sh
 #!/bin/bash
 
 # timezone
@@ -64,7 +64,7 @@ pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-_EOF_
+EOF
 
 
 # Run setup script
