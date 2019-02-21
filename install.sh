@@ -46,16 +46,20 @@ echo asterism-arch > /etc/hostname
 echo "127.0.1.1 asterism-arch.localdomain asterism-arch" > /etc/hosts
 systemctl enable dhcpcd.service
 
-# Users
-passwd
-
 # Select a mirror
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S grub efibootmgr --noconfirm
+pacman -S grub efibootmgr zsh grml-zsh-config git noto-fonts --noconfirm
+
+# Users
+echo "root:rootPass" | chpasswd
+useradd -m -g wheel -s zsh aries
+echo "aries:generalPass" | chpasswd
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+echo 'Defaults env_keep += "HOME"' >> /etc/sudoers
 
 # Settings
 
