@@ -43,7 +43,7 @@ echo KEYMAP=jp106 > /etc/vconsole.conf
 
 # Network
 echo asterism-arch > /etc/hostname
-echo "127.0.1.1 asterism-arch.localdomain asterism-arch"
+echo "127.0.1.1 asterism-arch.localdomain asterism-arch" > /etc/hosts
 systemctl enable dhcpcd.service
 
 # Users
