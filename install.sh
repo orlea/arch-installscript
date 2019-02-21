@@ -47,7 +47,7 @@ echo "127.0.1.1 asterism-arch.localdomain asterism-arch" > /etc/hosts
 systemctl enable dhcpcd.service
 
 # Users
-echo "password" | passwd --stdin root
+passwd
 
 # Select a mirror
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
@@ -55,7 +55,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S grub efibootmgr
+pacman -S grub efibootmgr --noconfirm
 
 # Settings
 
@@ -69,7 +69,7 @@ EOF
 
 # Run setup script
 chmod +x /mnt/setup.sh
-arch-chroot /mnt /mnt/setup.sh
+arch-chroot /mnt "/setup.sh"
 
 # Finish
 umount -R /mnt
