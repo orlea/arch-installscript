@@ -35,17 +35,34 @@ hwclock --systohc --utc
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo ja_JP.UTF-8 UTF-8 >> /etc/locale.gen
 locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 # keymap
+echo KEYMAP=jp106 > /etc/vconsole.conf
 
+# Network
+echo asterism-arch > /etc/hostname
+echo "127.0.1.1 asterism-arch.localdomain asterism-arch"
+systemctl enable dhcpcd.service
 
-# time
+# Users
+echo "password" | passwd --stdin root
 
+# Select a mirror
+cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
+grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
+pacman -S git zsh grml-zsh-config 
+
+# Settings
 
 
 # Bootloader
+bootctl --path=/boot install
+echo "default arch" >> /boot/loader/loader.conf
+echo "timeout 4" >> /boot/loader/loader.conf
+echo "editor no" >> /boot/loader/loader.conf
 
 _EOF_
 
