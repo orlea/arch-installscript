@@ -54,13 +54,14 @@ cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
-pacman -S grub
+pacman -Syu
+pacman -S grub efibootmgr
 
 # Settings
 
 
 # Bootloader
-
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
 _EOF_
 
