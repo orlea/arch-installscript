@@ -8,7 +8,7 @@ Arch Linuxインストール用スクリプトです。
 - Partition
   - UEFI + rootの2つ
 - Boot loader
-  - systemd-boot
+  - GRUB UEFI
 
 ## Warning
 

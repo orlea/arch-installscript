@@ -5,9 +5,10 @@ set -eu
 sgdisk -o /dev/sda
 sgdisk --new "0::+512M" /dev/sda
 sgdisk --new "0::0" /dev/sda
+sgdisk -t 1:ef00 /dev/sda
 
 # Format and mount filesystem
-mkfs.vfat -F32 /dev/sda1
+mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 mkdir /mnt/boot
@@ -53,21 +54,19 @@ cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
-pacman -S git zsh grml-zsh-config 
+pacman -S grub
 
 # Settings
 
 
 # Bootloader
-bootctl --path=/boot install
-echo "default arch" >> /boot/loader/loader.conf
-echo "timeout 4" >> /boot/loader/loader.conf
-echo "editor no" >> /boot/loader/loader.conf
+
 
 _EOF_
 
 
 # Run setup script
+chmod +x /mnt/setup.sh
 arch-chroot /mnt /mnt/setup.sh
 
 # Finish
