@@ -17,7 +17,8 @@ Arch Linuxインストール用スクリプトです。
 ## Usage
 
 ```
-$ wget https://raw.githubusercontent.com/orlea/arch-installscript/master/install.sh
-$ ./install.sh
+# wget https://raw.githubusercontent.com/orlea/arch-installscript/master/install.sh
+# chmod +x install.sh
+# ./install.sh
 ```
 
