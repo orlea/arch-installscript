@@ -53,7 +53,8 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 # packages
 pacman -Syu
 pacman -S grub efibootmgr zsh grml-zsh-config git noto-fonts --noconfirm
-# pacman -S xorg xorg-server gnome gnome-extra gnome-software
+# pacman -S xf86-video-fbdev
+# pacman -S xorg xorg-server gnome gnome-software
 
 # Users
 echo "root:rootPass" | chpasswd
