@@ -54,7 +54,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 pacman -Syu
 pacman -S grub efibootmgr zsh grml-zsh-config git noto-fonts noto-fonts-cjk noto-fonts-emoji --noconfirm
 # pacman -S xf86-video-fbdev
-# pacman -S xorg xorg-server xorg-apps xorg-xinit xorg-xclock xterm gnome gnome-extra gnome-software gnome-shell-extensions gnome-tweaks neovim chromium fcitx fcitx-im fcitx-mozc fcitx-configtool 
+pacman -S xorg xorg-server xorg-apps xorg-xinit xorg-xclock xterm gnome gnome-extra gnome-software gnome-shell-extensions gnome-tweaks neovim chromium fcitx fcitx-im fcitx-mozc fcitx-configtool --noconfirm
 
 # Users
 echo "root:rootPass" | chpasswd
@@ -64,11 +64,11 @@ echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 echo 'Defaults env_keep += "HOME"' >> /etc/sudoers
 
 # Settings
-# systemctl enable gdm.service
-# echo "export GTK_IM_MODULE=fcitx" >> /home/aries/.xprofile
-# echo "export QT_IM_MODULE=fcitx" >> /home/aries/.xprofile
-# echo "export XMODIFIERS=@im=fcitx" >> /home/aries/.xprofile
-# echo "export DefaultIMModule=fcitx" >> /home/aries/.xprofile
+systemctl enable gdm.service
+echo "export GTK_IM_MODULE=fcitx" >> /home/aries/.xprofile
+echo "export QT_IM_MODULE=fcitx" >> /home/aries/.xprofile
+echo "export XMODIFIERS=@im=fcitx" >> /home/aries/.xprofile
+echo "export DefaultIMModule=fcitx" >> /home/aries/.xprofile
 
 # Bootloader
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
