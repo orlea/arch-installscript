@@ -53,6 +53,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 # packages
 pacman -Syu
 pacman -S grub efibootmgr zsh grml-zsh-config git noto-fonts --noconfirm
+# pacman -S xorg xorg-server gnome gnome-extra gnome-software
 
 # Users
 echo "root:rootPass" | chpasswd
@@ -62,7 +63,7 @@ echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 echo 'Defaults env_keep += "HOME"' >> /etc/sudoers
 
 # Settings
-
+# systemctl enable gdm.service
 
 # Bootloader
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
