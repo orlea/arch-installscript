@@ -56,7 +56,7 @@ pacman -S grub efibootmgr zsh grml-zsh-config git noto-fonts --noconfirm
 
 # Users
 echo "root:rootPass" | chpasswd
-useradd -m -g wheel -s zsh aries
+useradd -m -g wheel -s /bin/zsh aries
 echo "aries:generalPass" | chpasswd
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 echo 'Defaults env_keep += "HOME"' >> /etc/sudoers
