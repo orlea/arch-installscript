@@ -6,6 +6,9 @@ sgdisk -o /dev/sda
 sgdisk --new "0::+512M" /dev/sda
 sgdisk --new "0::0" /dev/sda
 sgdisk -t 1:ef00 /dev/sda
+# parted -s -a optimal /dev/sda mklabel msdos
+# parted -s -a optimal /dev/sda -- mkpart primary xfs 1 -1
+# mkfs.ext4 /dev/sda1
 
 # Format and mount filesystem
 mkfs.fat -F32 /dev/sda1
@@ -74,6 +77,8 @@ echo "export DefaultIMModule=fcitx" >> /home/aries/.xprofile
 # Bootloader
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
+# grub-install --target=i386-pc /dev/sda
+# grub-mkconfig -o /boot/grub/grub.cfg
 
 EOF
 
