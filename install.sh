@@ -53,7 +53,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S zsh git noto-fonts noto-fonts-cjk noto-fonts-emoji --noconfirm
+pacman -S zsh git noto-fonts noto-fonts-cjk noto-fonts-emoji dhcpcd --noconfirm
 
 # Users
 echo "root:rootPass" | chpasswd
