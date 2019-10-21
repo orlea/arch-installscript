@@ -22,7 +22,7 @@ cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # Install base system
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel linux
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
