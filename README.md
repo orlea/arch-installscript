@@ -8,10 +8,9 @@ Arch Linuxインストール用スクリプトです。
 - Partition
   - UEFI + rootの2つ
 - Boot loader
-  - GRUB UEFI
+  - systemd-boot UEFI
 
-デスクトップ用途なのでxやDE等もインストールされます。
-キーボード配列の変更が上手くできず停滞中…。
+一先ずサーバ用途でCUIのみ。
 
 ## Warning
 
