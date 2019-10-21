@@ -55,7 +55,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S grub efibootmgr zsh zsh-completions git noto-fonts noto-fonts-cjk noto-fonts-emoji --noconfirm
+pacman -S grub efibootmgr zsh git noto-fonts noto-fonts-cjk noto-fonts-emoji --noconfirm
 # pacman -S xf86-video-fbdev
 # pacman -S xf86-video-amdgpu mesa lib32-mesa
 pacman -S xorg xorg-server xorg-apps xorg-xinit xorg-xclock xterm gnome gnome-extra gnome-software gnome-shell-extensions gnome-tweaks neovim chromium fcitx fcitx-im fcitx-mozc fcitx-configtool --noconfirm
