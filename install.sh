@@ -6,9 +6,7 @@ sgdisk -o /dev/sda
 sgdisk --new "0::+512M" /dev/sda
 sgdisk --new "0::0" /dev/sda
 sgdisk -t 1:ef00 /dev/sda
-# parted -s -a optimal /dev/sda mklabel msdos
-# parted -s -a optimal /dev/sda -- mkpart primary xfs 1 -1
-# mkfs.ext4 /dev/sda1
+e2label /dev/sda2 arch_os
 
 # Format and mount filesystem
 mkfs.fat -F32 /dev/sda1
@@ -33,7 +31,7 @@ cat << EOF > /mnt/setup.sh
 
 # timezone
 ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-hwclock --systohc --utc
+hwclock --systohc
 
 # locale
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
@@ -55,10 +53,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S grub efibootmgr zsh git noto-fonts noto-fonts-cjk noto-fonts-emoji --noconfirm
-# pacman -S xf86-video-fbdev
-# pacman -S xf86-video-amdgpu mesa lib32-mesa
-pacman -S xorg xorg-server xorg-apps xorg-xinit xorg-xclock xterm gnome gnome-extra gnome-software gnome-shell-extensions gnome-tweaks neovim chromium fcitx fcitx-im fcitx-mozc fcitx-configtool --noconfirm
+pacman -S zsh git noto-fonts noto-fonts-cjk noto-fonts-emoji --noconfirm
 
 # Users
 echo "root:rootPass" | chpasswd
@@ -67,18 +62,18 @@ echo "aries:generalPass" | chpasswd
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 echo 'Defaults env_keep += "HOME"' >> /etc/sudoers
 
-# Settings
-systemctl enable gdm.service
-echo "export GTK_IM_MODULE=fcitx" >> /home/aries/.xprofile
-echo "export QT_IM_MODULE=fcitx" >> /home/aries/.xprofile
-echo "export XMODIFIERS=@im=fcitx" >> /home/aries/.xprofile
-echo "export DefaultIMModule=fcitx" >> /home/aries/.xprofile
 
 # Bootloader
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
-grub-mkconfig -o /boot/grub/grub.cfg
-# grub-install --target=i386-pc /dev/sda
-# grub-mkconfig -o /boot/grub/grub.cfg
+bootctl --path=/boot install
+echo "default  arch" >> /boot/loader/loader.conf
+echo "timeout  4" >> /boot/loader/loader.conf
+echo "editor   no" >> /boot/loader/loader.conf
+
+echo "title   Arch Linux" >> /boot/loader/entries/arch.conf
+echo "linux   /vmlinuz-linux" >> /boot/loader/entries/arch.conf
+echo "initrd  /intel-ucode.img" >> /boot/loader/entries/arch.conf
+echo "initrd  /initramfs-linux.img" >> /boot/loader/entries/arch.conf
+echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
 
 EOF
 
