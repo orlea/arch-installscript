@@ -6,11 +6,11 @@ sgdisk -o /dev/sda
 sgdisk --new "0::+512M" /dev/sda
 sgdisk --new "0::0" /dev/sda
 sgdisk -t 1:ef00 /dev/sda
-e2label /dev/sda2 arch_os
 
 # Format and mount filesystem
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
+e2label /dev/sda2 arch_os
 mount /dev/sda2 /mnt
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
