@@ -1,6 +1,11 @@
 #!/bin/sh
 set -eu
 
+# CPU microcode setting
+# Please comment out unuse CPU
+MICROCODE="amd-ucode"
+MICROCODE="intel-ucode"
+
 # Create partition
 sgdisk -o /dev/sda
 sgdisk --new "0::+512M" /dev/sda
@@ -53,7 +58,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S zsh git noto-fonts noto-fonts-cjk noto-fonts-emoji dhcpcd --noconfirm
+pacman -S zsh git dhcpcd $MICROCODE --noconfirm
 
 # Users
 echo "root:rootPass" | chpasswd
@@ -71,6 +76,7 @@ echo "editor   no" >> /boot/loader/loader.conf
 
 echo "title   Arch Linux" >> /boot/loader/entries/arch.conf
 echo "linux   /vmlinuz-linux" >> /boot/loader/entries/arch.conf
+echo "initrd  /initrd  /$MICROCODE.img" >> /boot/loader/entries/arch.conf
 echo "initrd  /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
 
