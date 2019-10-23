@@ -58,7 +58,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S zsh git dhcpcd linux-firmware --noconfirm
+pacman -S zsh git dhcpcd linux-firmware openssh --noconfirm
 
 # Users
 echo "root:rootPass" | chpasswd
@@ -66,7 +66,6 @@ useradd -m -g wheel -s /bin/zsh aries
 echo "aries:generalPass" | chpasswd
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 echo 'Defaults env_keep += "HOME"' >> /etc/sudoers
-
 
 # Bootloader
 bootctl --path=/boot install
@@ -78,6 +77,9 @@ echo "title   Arch Linux" >> /boot/loader/entries/arch.conf
 echo "linux   /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd  /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
+
+# other settings
+systemctl enable sshd.service
 
 EOF
 
