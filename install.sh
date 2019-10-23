@@ -58,7 +58,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S zsh git dhcpcd --noconfirm
+pacman -S zsh git dhcpcd linux-firmware --noconfirm
 
 # Users
 echo "root:rootPass" | chpasswd
