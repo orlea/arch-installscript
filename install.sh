@@ -76,7 +76,7 @@ echo "editor   no" >> /boot/loader/loader.conf
 
 echo "title   Arch Linux" >> /boot/loader/entries/arch.conf
 echo "linux   /vmlinuz-linux" >> /boot/loader/entries/arch.conf
-echo "initrd  /initrd  /$MICROCODE.img" >> /boot/loader/entries/arch.conf
+echo "initrd  /$MICROCODE.img" >> /boot/loader/entries/arch.conf
 echo "initrd  /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
 
