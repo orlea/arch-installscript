@@ -58,7 +58,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S zsh git dhcpcd linux-firmware openssh --noconfirm
+pacman -S zsh git dhcpcd linux-firmware openssh neovim tmux --noconfirm
 
 # Users
 echo "root:rootPass" | chpasswd
