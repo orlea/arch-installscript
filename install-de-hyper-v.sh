@@ -71,12 +71,6 @@ echo "export GTK_IM_MODULE=fcitx" >> /etc/environment
 echo "export QT_IM_MODULE=fcitx" >> /etc/environment
 echo "export XMODIFIERS=@im=fcitx" >> /etc/environment
 
-# AUR
-pacman -S go --noconfirm
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-
 # Users
 echo "root:rootPass" | chpasswd
 useradd -m -g wheel -s /bin/zsh aries
