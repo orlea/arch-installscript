@@ -65,7 +65,7 @@ pacman -S zsh git dhcpcd linux-firmware openssh neovim tmux --noconfirm
 pacman -S xf86-video-fbdev --noconfirm
 pacman -S gnome gnome-extra gnome-software xorg-server-xwayland --noconfirm
 pacman -S otf-ipafont noto-fonts-cjk noto-fonts-emoji --noconfirm
-pacman -S fcitx fcitx-mozc fcitx-im --noconfirm
+pacman -S fcitx fcitx-mozc fcitx-im fcitx-configtool --noconfirm
 localectl set-keymap jp106
 echo "export GTK_IM_MODULE=fcitx" >> /etc/environment
 echo "export QT_IM_MODULE=fcitx" >> /etc/environment
