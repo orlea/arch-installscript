@@ -63,7 +63,7 @@ pacman -S zsh git dhcpcd linux-firmware openssh neovim tmux --noconfirm
 
 # Desktop Environment and Japanese
 pacman -S xf86-video-fbdev --noconfirm
-pacman -S gnome gnome-extra gnome-software --noconfirm
+pacman -S gnome gnome-extra gnome-software xorg-server-xwayland --noconfirm
 pacman -S otf-ipafont noto-fonts-cjk noto-fonts-emoji --noconfirm
 pacman -S fcitx fcitx-mozc fcitx-im --noconfirm
 localectl set-keymap jp106
@@ -91,6 +91,7 @@ echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
 
 # service settings
 systemctl enable sshd.service
+systemctl enable gdm.service
 systemctl disable dhcpcd.service
 systemctl enable NetworkManager.service
 
