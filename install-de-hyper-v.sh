@@ -51,15 +51,25 @@ echo KEYMAP=jp106 > /etc/vconsole.conf
 # Network
 echo asterism-arch > /etc/hostname
 echo "127.0.1.1 asterism-arch.localdomain asterism-arch" > /etc/hosts
-systemctl enable dhcpcd.service
+systemctl start dhcpcd.service
 
 # Select a mirror
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
-# packages
+# Main packages
 pacman -Syu
 pacman -S zsh git dhcpcd linux-firmware openssh neovim tmux --noconfirm
+
+# Desktop Environment and Japanese
+pacman -S xf86-video-fbdev --noconfirm
+pacman -S gnome gnome-extra gnome-software --noconfirm
+pacman -S otf-ipafont noto-fonts-cjk noto-fonts-emoji --noconfirm
+pacman -S fcitx fcitx-mozc fcitx-im --noconfirm
+localectl set-keymap jp106
+echo "export GTK_IM_MODULE=fcitx" >> /etc/environment
+echo "export QT_IM_MODULE=fcitx" >> /etc/environment
+echo "export XMODIFIERS=@im=fcitx" >> /etc/environment
 
 # AUR
 pacman -S go --noconfirm
@@ -85,8 +95,10 @@ echo "linux   /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd  /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
 
-# other settings
+# service settings
 systemctl enable sshd.service
+systemctl disable dhcpcd.service
+systemctl enable NetworkManager.service
 
 EOF
 
