@@ -56,6 +56,7 @@ systemctl start dhcpcd.service
 # Select a mirror
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
+# sed -i '1iServer = http://localcache:8080' /etc/pacman.d/mirrorlist
 
 # Main packages
 pacman -Syu
