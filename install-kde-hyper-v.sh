@@ -66,7 +66,7 @@ pacman -S zsh git dhcpcd linux-firmware openssh neovim tmux --noconfirm
 pacman -S xf86-video-fbdev --noconfirm
 pacman -S xorg-server xorg-apps plasma kde-applications --noconfirm
 pacman -S otf-ipafont noto-fonts-cjk noto-fonts-emoji --noconfirm
-pacman -S fcitx fcitx-mozc fcitx-im kcm-fcitx --noconfirm
+pacman -S fcitx fcitx-mozc fcitx-im fcitx-configtool --noconfirm
 localectl set-keymap jp106
 
 # Users
@@ -75,6 +75,9 @@ useradd -m -g wheel -s /bin/zsh aries
 echo "aries:generalPass" | chpasswd
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 echo 'Defaults env_keep += "HOME"' >> /etc/sudoers
+echo "export GTK_IM_MODULE=fcitx" >> /home/aries/.xprofile
+echo "export QT_IM_MODULE=fcitx" >> /home/aries/.xprofile
+echo "export XMODIFIERS=@im=fcitx" >> /home/aries/.xprofile
 
 # Bootloader
 bootctl --path=/boot install
