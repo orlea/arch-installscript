@@ -68,6 +68,7 @@ pacman -S xorg-server xorg-apps plasma kde-applications --noconfirm
 pacman -S otf-ipafont noto-fonts-cjk noto-fonts-emoji --noconfirm
 pacman -S fcitx fcitx-mozc fcitx-im fcitx-configtool --noconfirm
 localectl set-keymap jp106
+localectl set-x11-keymap jp
 
 # Users
 echo "root:rootPass" | chpasswd
