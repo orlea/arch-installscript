@@ -89,7 +89,7 @@ echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
 
 # service settings
 systemctl enable sshd.service
-systemctl enable gdm.service
+systemctl enable sddm.service
 systemctl disable dhcpcd.service
 systemctl enable NetworkManager.service
 
