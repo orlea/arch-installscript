@@ -42,7 +42,6 @@ hwclock --systohc
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo ja_JP.UTF-8 UTF-8 >> /etc/locale.gen
 locale-gen
-export LANG=C
 echo LANG=ja_JP.UTF-8 > /etc/locale.conf
 
 # keymap
