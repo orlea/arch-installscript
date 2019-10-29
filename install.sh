@@ -59,7 +59,7 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 
 # packages
 pacman -Syu
-pacman -S zsh git dhcpcd linux-firmware openssh neovim tmux --noconfirm
+pacman -S zsh git dhcpcd linux-firmware openssh vim nano tmux --noconfirm
 
 # AUR
 pacman -S go --noconfirm
@@ -87,6 +87,7 @@ echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
 
 # other settings
 systemctl enable sshd.service
+systemctl enable dhcpcd.servicd
 
 EOF
 
