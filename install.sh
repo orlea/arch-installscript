@@ -61,12 +61,6 @@ grep "\.jp" /tmp/mirrorlist > /etc/pacman.d/mirrorlist
 pacman -Syu
 pacman -S zsh git dhcpcd linux-firmware openssh vim nano tmux --noconfirm
 
-# AUR
-pacman -S go --noconfirm
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-
 # Users
 echo "root:rootPass" | chpasswd
 useradd -m -g wheel -s /bin/zsh aries
