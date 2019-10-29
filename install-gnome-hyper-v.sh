@@ -43,7 +43,7 @@ echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo ja_JP.UTF-8 UTF-8 >> /etc/locale.gen
 locale-gen
 echo LANG=ja_JP.UTF-8 > /etc/locale.conf
-echo LANG=en_US.UTF-8 >> /etc/locale.conf
+echo LC_TIME=en_US.UTF-8 >> /etc/locale.conf
 
 # keymap
 echo KEYMAP=jp106 > /etc/vconsole.conf
