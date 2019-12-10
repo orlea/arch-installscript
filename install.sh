@@ -81,7 +81,7 @@ echo "options root=LABEL=arch_os rw" >> /boot/loader/entries/arch.conf
 
 # other settings
 systemctl enable sshd.service
-systemctl enable dhcpcd.servicd
+systemctl enable dhcpcd.service
 
 EOF
 
